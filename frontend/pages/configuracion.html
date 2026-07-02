@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajustes | Bankomunal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/datos.css">
+    <link rel="stylesheet" href="../css/utilities.css">
+</head>
+
+<body class="bg-main">
+    <div class="app-container">
+        <aside class="sidebar"></aside>
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+        <div class="app-body">
+            <header class="main-header" id="mainHeader">
+                <div class="header-left">
+                    <button id="menuToggle" class="btn-icon" aria-label="Menú"><i class="fa-solid fa-bars"></i></button>
+                    <span class="header-title">Ajustes</span>
+                </div>
+                <div class="header-right">
+                    <button id="themeBtn" class="btn-icon" aria-label="Modo oscuro" title="Cambiar tema"><i
+                            class="fa-solid fa-moon"></i></button>
+                    <div class="notif-wrapper">
+                        <button class="notif-btn" id="notifToggle" aria-label="Notificaciones">
+                            <i class="fa-solid fa-bell"></i>
+                            <span class="notif-badge hidden" id="notifCount">0</span>
+                        </button>
+                    </div>
+                    <div class="user-profile">
+                        <div class="user-text">
+                            <span id="nombreUsuario" class="user-name">Cargando...</span>
+                            <small id="rolUsuario" class="user-role">...</small>
+                        </div>
+                        <div id="avatarUsuario" class="avatar-circle">--</div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="main-wrapper">
+                <header class="content-header u-e50689">
+                    <p class="welcome-msg">Personaliza tu cuenta, preferencias y seguridad.</p>
+                </header>
+
+
+                <div class="config-kpi-row">
+                    <div class="config-kpi">
+                        <div class="val" id="kpiMiembro">—</div>
+                        <div class="lbl">Miembro desde</div>
+                    </div>
+                    <div class="config-kpi">
+                        <div class="val" id="kpiRol">—</div>
+                        <div class="lbl">Rol actual</div>
+                    </div>
+                    <div class="config-kpi">
+                        <div class="val" id="kpiSesiones">1</div>
+                        <div class="lbl">Sesión activa</div>
+                    </div>
+                    <div class="config-kpi">
+                        <div class="val u-deccf9" id="kpi2FA">✓</div>
+                        <div class="lbl">2FA activado</div>
+                    </div>
+                </div>
+
+                <div class="config-layout">
+
+                    <nav class="config-nav">
+                        <button class="config-tab active" data-tab="perfil"><i class="fa-solid fa-user"></i>
+                            Perfil</button>
+                        <button class="config-tab" data-tab="preferencias"><i class="fa-solid fa-palette"></i>
+                            Preferencias</button>
+                        <button class="config-tab" data-tab="seguridad"><i class="fa-solid fa-shield-halved"></i>
+                            Seguridad</button>
+                        <button class="config-tab hidden" data-tab="sistema" id="tabSistemaBtn"><i
+                                class="fa-solid fa-gears"></i> Sistema</button>
+                    </nav>
+
+
+                    <div>
+
+                        <section id="tab-perfil" class="tab-pane active">
+                            <div class="card">
+                                <h3 class="card-title u-900b7b">Información Personal</h3>
+                                <p class="text-muted mb-20 u-9ee0bb">Actualiza tus datos de contacto y foto de perfil.
+                                </p>
+
+
+                                <div class="u-1df755">
+                                    <div class="avatar-edit-wrap" data-trigger="fotoInput" title="Cambiar foto">
+                                        <div class="avatar-large" id="avatarPreview">--</div>
+                                        <div class="avatar-overlay"><i class="fa-solid fa-camera"></i></div>
+                                    </div>
+                                    <input type="file" id="fotoInput" accept="image/*" class="u-cb4589">
+                                    <div>
+                                        <div id="nombrePreview" class="u-b84636">Cargando...</div>
+                                        <div id="emailPreview" class="u-67fd48">...</div>
+                                        <button class="btn-secondary u-e6e1aa" data-trigger="fotoInput">
+                                            <i class="fa-solid fa-camera"></i> Cambiar foto
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <form id="formConfigPerfil">
+                                    <div class="grid-form">
+                                        <div class="form-group">
+                                            <label>Nombre Completo</label>
+                                            <input type="text" id="config-nombre" class="input-field"
+                                                placeholder="Tu nombre">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Correo Electrónico</label>
+                                            <input type="email" id="config-email" class="input-field"
+                                                placeholder="correo@ejemplo.com">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Teléfono</label>
+                                            <input type="text" id="config-telefono" class="input-field"
+                                                placeholder="+57 000 000 0000">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Ciudad</label>
+                                            <input type="text" id="config-ciudad" class="input-field"
+                                                placeholder="Tu ciudad">
+                                        </div>
+                                    </div>
+                                    <div class="u-6a4c83">
+                                        <button type="button" class="btn-secondary"
+                                            data-action="reload">Cancelar</button>
+                                        <button type="submit" class="btn-primary" id="btnGuardarPerfil">
+                                            <i class="fa-solid fa-floppy-disk"></i> Guardar Perfil
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </section>
+
+
+                        <section id="tab-preferencias" class="tab-pane">
+                            <div class="card">
+                                <h3 class="card-title u-900b7b">Interfaz y Notificaciones</h3>
+                                <p class="text-muted u-b1fd3b">Personaliza cómo interactúas con la plataforma.</p>
+
+                                <div class="setting-row">
+                                    <div class="setting-info">
+                                        <strong>Modo Oscuro</strong>
+                                        <span>Ajusta la apariencia del sistema.</span>
+                                    </div>
+                                    <button class="btn-icon u-e1acab" id="themeBtn2" title="Cambiar tema">
+                                        <i class="fa-solid fa-moon u-6c660c"></i>
+                                    </button>
+                                </div>
+                                <div class="setting-row">
+                                    <div class="setting-info">
+                                        <strong>Idioma</strong>
+                                        <span>Idioma principal de la plataforma.</span>
+                                    </div>
+                                    <select id="config-idioma" class="input-field u-e45251">
+                                        <option value="es">Español</option>
+                                        <option value="en">English</option>
+                                    </select>
+                                </div>
+                                <div class="setting-row">
+                                    <div class="setting-info">
+                                        <strong>Alertas de Saldo Bajo</strong>
+                                        <span>Notificar cuando mi saldo sea bajo.</span>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="config-alerta-saldo" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                                <div class="setting-row">
+                                    <div class="setting-info">
+                                        <strong>Notificaciones por Email</strong>
+                                        <span>Recibir resúmenes y alertas en tu correo.</span>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="config-notif-email" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                                <div class="setting-row">
+                                    <div class="setting-info">
+                                        <strong>Notificaciones Push</strong>
+                                        <span>Alertas en tiempo real en el navegador.</span>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="config-notif-push" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                                <div class="setting-row">
+                                    <div class="setting-info">
+                                        <strong>WhatsApp / SMS</strong>
+                                        <span>Mensajes de confirmación de transacciones.</span>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="config-notif-whatsapp">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+
+                                <div class="u-4153dc">
+                                    <button class="btn-primary" id="btnGuardarPrefs">
+                                        <i class="fa-solid fa-floppy-disk"></i> Guardar Preferencias
+                                    </button>
+                                </div>
+                            </div>
+                        </section>
+
+
+                        <section id="tab-seguridad" class="tab-pane">
+                            <div class="card u-9590f7">
+                                <h3 class="card-title u-9590f7">Protección de Cuenta</h3>
+                                <ul class="security-check-list">
+                                    <li>
+                                        <i class="fa-solid fa-key u-0152e1"></i>
+                                        <div class="u-da5cd6">
+                                            <strong class="u-579f53">Contraseña</strong>
+                                            <span class="u-67fd48">Cambia tu contraseña periódicamente.</span>
+                                            <div id="seccionPassword" class="hidden u-102753">
+                                                <form id="formCambiarPass">
+                                                    <div class="form-group u-9edd2d">
+                                                        <label>Contraseña actual</label>
+                                                        <input type="password" id="passActual" class="input-field"
+                                                            placeholder="Contraseña actual" required>
+                                                    </div>
+                                                    <div class="form-group u-9edd2d">
+                                                        <label>Nueva contraseña</label>
+                                                        <input type="password" id="passNueva" class="input-field"
+                                                            placeholder="Mínimo 8 caracteres" required>
+                                                    </div>
+                                                    <div class="form-group u-916e3e">
+                                                        <label>Confirmar nueva contraseña</label>
+                                                        <input type="password" id="passConfirmar" class="input-field"
+                                                            placeholder="Repite la nueva contraseña" required>
+                                                    </div>
+                                                    <button type="submit" class="btn-primary u-a7560b">Actualizar
+                                                        Contraseña</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <button id="btnCambiarPass" class="btn-secondary u-7ef2c0">Cambiar</button>
+                                    </li>
+                                    <li>
+                                        <i class="fa-solid fa-mobile-screen u-05dce2"></i>
+                                        <div class="u-da5cd6">
+                                            <strong class="u-579f53">Verificación en dos pasos (2FA)</strong>
+                                            <span id="status-2fa" class="text-sm u-721463">
+                                                <i class="fa-solid fa-shield-halved"></i> Cargando...
+                                            </span>
+                                            <div id="seccion2FA" class="hidden tfa-box">
+                                                <p>
+                                                    La verificación en dos pasos añade una capa extra de seguridad.
+                                                    Al activarla, necesitarás un código adicional al iniciar sesión.
+                                                </p>
+                                                <div class="tfa-actions">
+                                                    <button id="btnActivar2FA" class="btn-primary btn-2fa-action">
+                                                        <i class="fa-solid fa-lock"></i> Activar 2FA
+                                                    </button>
+                                                    <button id="btnDesactivar2FA" class="btn-secondary btn-2fa-action">
+                                                        <i class="fa-solid fa-lock-open"></i> Desactivar 2FA
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button id="btnGestionar2FA" class="btn-secondary u-7ef2c0">Gestionar</button>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="card u-2388b5">
+                                <h4 class="u-750eb1"><i class="fa-solid fa-triangle-exclamation"></i> Zona de Peligro
+                                </h4>
+                                <p class="u-156daa">Esta acción es permanente e irreversible.</p>
+                                <button id="btnBorrarCuenta" class="btn-secondary u-a0f2c2">
+                                    <i class="fa-solid fa-user-slash"></i> Desactivar mi cuenta
+                                </button>
+                            </div>
+                        </section>
+
+                        <section id="tab-sistema" class="tab-pane">
+                            <div class="card">
+                                <h3 class="card-title u-900b7b">Configuración del Sistema</h3>
+                                <p class="text-muted u-b1fd3b">Parámetros operativos de la cooperativa. Solo visible
+                                    para administradores.</p>
+
+                                <div class="setting-row">
+                                    <div class="setting-info">
+                                        <strong>Nombre de la cooperativa</strong>
+                                        <span>Aparece en encabezados y comprobantes.</span>
+                                    </div>
+                                    <input type="text" id="sis-nombre" class="input-field" style="max-width:220px">
+                                </div>
+                                <div class="setting-row">
+                                    <div class="setting-info">
+                                        <strong>Correo de soporte</strong>
+                                        <span>Contacto mostrado a los socios.</span>
+                                    </div>
+                                    <input type="email" id="sis-email" class="input-field" style="max-width:220px">
+                                </div>
+                                <div class="setting-row">
+                                    <div class="setting-info">
+                                        <strong>Tasa de interés mínima (%)</strong>
+                                        <span>Tasa mensual más baja permitida en préstamos.</span>
+                                    </div>
+                                    <input type="number" id="sis-tasa-min" class="input-field" style="max-width:120px"
+                                        step="0.1" min="0">
+                                </div>
+                                <div class="setting-row">
+                                    <div class="setting-info">
+                                        <strong>Tasa de interés máxima (%)</strong>
+                                        <span>Tasa mensual más alta permitida en préstamos.</span>
+                                    </div>
+                                    <input type="number" id="sis-tasa-max" class="input-field" style="max-width:120px"
+                                        step="0.1" min="0">
+                                </div>
+                                <div class="setting-row">
+                                    <div class="setting-info">
+                                        <strong>Monto máximo de préstamo (COP)</strong>
+                                        <span>Tope que puede solicitar un socio.</span>
+                                    </div>
+                                    <input type="number" id="sis-monto-max" class="input-field" style="max-width:160px"
+                                        min="0" step="10000">
+                                </div>
+                                <div class="setting-row">
+                                    <div class="setting-info">
+                                        <strong>Plazo máximo (meses)</strong>
+                                        <span>Duración máxima de un préstamo.</span>
+                                    </div>
+                                    <input type="number" id="sis-plazo-max" class="input-field" style="max-width:100px"
+                                        min="1" step="1">
+                                </div>
+                                <div class="setting-row">
+                                    <div class="setting-info">
+                                        <strong>Modo mantenimiento</strong>
+                                        <span>Restringe temporalmente el acceso de los socios.</span>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="sis-mantenimiento">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                                <div class="setting-row">
+                                    <div class="setting-info">
+                                        <strong>Registro de nuevos socios</strong>
+                                        <span>Permite que se cree una cuenta desde registro.html.</span>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="sis-registro" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                                <div class="setting-row">
+                                    <div class="setting-info">
+                                        <strong>Notificaciones al administrador</strong>
+                                        <span>Avisos internos de eventos importantes del sistema.</span>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="sis-notif-admin" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+
+                                <div class="u-4153dc">
+                                    <button class="btn-primary" id="btnGuardarSistema">
+                                        <i class="fa-solid fa-floppy-disk"></i> Guardar Configuración
+                                    </button>
+                                </div>
+                            </div>
+                        </section>
+
+                    </div>
+                </div>
+
+                <footer class="main-footer">
+                    <p>&copy; 2026 Bankomunal. Gestión de Microfinanzas Comunitarias.</p>
+                </footer>
+            </main>
+        </div>
+    </div>
+    <div id="toast" class="toast-container"></div>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/sidebar.js"></script>
+    <script src="../js/core.js"></script>
+    <script src="../js/panel.js"></script>
+    <script src="../js/paginas.js"></script>
+</body>
+
+</html>

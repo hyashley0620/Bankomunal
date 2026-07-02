@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Comunidad | Bankomunal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/gestion.css">
+    <link rel="stylesheet" href="../css/utilities.css">
+</head>
+
+<body class="bg-main">
+    <div class="app-container">
+
+
+        <aside class="sidebar"></aside>
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <div class="app-body">
+
+
+            <header class="main-header" id="mainHeader">
+                <div class="header-left">
+                    <button id="menuToggle" class="btn-icon" aria-label="Menú">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <span class="header-title">Mi Comunidad</span>
+                </div>
+                <div class="header-right">
+                    <button id="themeBtn" class="btn-icon" aria-label="Modo oscuro" title="Cambiar tema">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                    <div class="notif-wrapper">
+                        <button class="notif-btn" id="notifToggle" aria-label="Notificaciones">
+                            <i class="fa-solid fa-bell"></i>
+                            <span class="notif-badge hidden" id="notifCount">0</span>
+                        </button>
+                    </div>
+                    <div class="user-profile">
+                        <div class="user-text">
+                            <span id="nombreUsuario" class="user-name">Cargando...</span>
+                            <small id="rolUsuario" class="user-role">...</small>
+                        </div>
+                        <div id="avatarUsuario" class="avatar-circle">--</div>
+                    </div>
+                </div>
+            </header>
+
+
+            <main class="main-wrapper">
+                <div id="toastContainer" class="toast-container"></div>
+
+
+                <div class="tab-bar">
+                    <button class="tab-btn" data-tab="grupos"><i class="fa-solid fa-people-group"></i> Mis
+                        Grupos</button>
+                    <button class="tab-btn" data-tab="miembros"><i class="fa-solid fa-circle-nodes"></i>
+                        Miembros</button>
+                    <button class="tab-btn active" data-tab="publicaciones"><i class="fa-regular fa-pen-to-square"></i>
+                        Publicaciones</button>
+                    <button class="tab-btn" data-tab="eventos"><i class="fa-regular fa-calendar-plus"></i>
+                        Eventos</button>
+                </div>
+
+
+                <div class="tab-pane" id="tab-grupos">
+                    <section class="card widget anima-fade-in" id="seccionGrupos">
+                        <div class="section-header u-546e10">
+                            <h3 class="text-primary"><i class="fa-solid mr-2"></i>Mis Grupos</h3>
+                            <button id="btnNuevoGrupo" class="u-252855">
+                                <i class="fa-solid fa-plus"></i> Crear
+                            </button>
+                        </div>
+                        <div id="listaGrupos">
+                            <div class="u-1bcd81">Cargando grupos...</div>
+                        </div>
+                    </section>
+                </div>
+
+
+                <div class="tab-pane" id="tab-miembros">
+                    <section class="card widget anima-fade-in">
+                        <div class="section-header">
+                            <h3 class="text-primary"><i class="fa-solid mr-2"></i>Miembros</h3>
+                        </div>
+                        <div id="listaMiembros" class="member-list mt-10">
+                            <div class="text-center p-20 text-muted">Cargando miembros...</div>
+                        </div>
+                    </section>
+                </div>
+
+
+                <div class="tab-pane active" id="tab-publicaciones">
+                    <section class="card publish-card anima-fade-in">
+                        <div class="publish-input-group">
+                            <div class="avatar-circle sm user-name-initial" id="avatarPublicar">--</div>
+                            <button id="triggerModal" class="input-fake-btn">
+                                ¿ Qué quieres compartir hoy<span class="nombre-dinamico"> </span>?
+                            </button>
+                        </div>
+
+                        <div class="publish-actions-grid border-top mt-15 pt-10">
+                            <input type="file" id="inputFile" accept="image/*" class="u-cb4589">
+
+                            <button class="btn-ghost action-btn" id="btnUploadPhoto" data-trigger="inputFile">
+                                <i class="fa-regular fa-image text-success"></i>
+                                <span>Foto</span>
+                            </button>
+                            <button class="btn-ghost action-btn" id="btnPublicarEvento">
+                                <i class="fa-regular fa-calendar-check text-primary"></i>
+                                <span>Evento</span>
+                            </button>
+                        </div>
+                    </section>
+
+                    <div id="feedPublicaciones" class="posts-container">
+                        <div class="text-center p-20 text-muted">Cargando publicaciones del muro...</div>
+                    </div>
+                </div>
+
+
+                <div class="tab-pane" id="tab-eventos">
+                    <section class="card widget anima-fade-in">
+                        <div class="section-header">
+                            <h3 class="text-primary"><i class="fa-regular fa-calendar-star mr-2"></i>Calendario</h3>
+                            <button id="btnNuevoEvento" class="u-1dd82e">
+                                <i class="fa-solid fa-plus"></i> Agregar
+                            </button>
+                        </div>
+                        <div class="calendar-mini mt-15">
+                            <div class="calendar-mini-header">
+                                <button id="calPrevMes" class="btn-icon" aria-label="Mes anterior"><i
+                                        class="fa-solid fa-chevron-left"></i></button>
+                                <strong id="calMesLabel" class="calendar-mes-label"></strong>
+                                <button id="calNextMes" class="btn-icon" aria-label="Mes siguiente"><i
+                                        class="fa-solid fa-chevron-right"></i></button>
+                            </div>
+                            <div class="calendar-days-header">
+                                <span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span>
+                            </div>
+                            <div id="calendarGrid" class="calendar-grid"></div>
+                        </div>
+                        <div id="eventosProximos" class="event-highlights mt-15">
+                        </div>
+                    </section>
+                </div>
+
+                <footer class="main-footer">
+                    <p>&copy; 2026 Bankomunal. Gestión de Microfinanzas Comunitarias.</p>
+                </footer>
+            </main>
+
+        </div>
+
+    </div>
+
+    <div id="toast" class="toast-container"></div>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/sidebar.js"></script>
+    <script src="../js/core.js"></script>
+    <script src="../js/panel.js"></script>
+    <script src="../js/paginas.js"></script>
+
+    <div id="modalAgregarMiembro" class="u-584ed4">
+        <div class="u-f24e8c">
+            <div class="u-1dc512">
+                <h3 class="u-51ed21"><i class="fa-solid u-dcd0cf"></i> Agregar Miembro</h3>
+                <button id="_cerrarM" class="u-61f461">&times;</button>
+            </div>
+            <div class="u-1349f2">
+                <input type="hidden" id="_gid"> <input type="hidden" id="_uid">
+                <label class="u-c085b7">Buscar usuario</label>
+                <input id="_buscar" type="text" placeholder="Nombre o email..." class="u-215821">
+                <div id="_resultados" class="u-4ba6e7"></div>
+                <p id="_unombre" class="u-8bd0e5"></p>
+                <label class="u-c085b7">Rol</label>
+                <select id="_rol" class="u-8b3efc">
+                    <option value="miembro">Miembro</option>
+                    <option value="tesorero">Tesorero</option>
+                    <option value="secretario">Secretario</option>
+                    <option value="presidente">Presidente</option>
+                </select>
+            </div>
+            <div class="u-21b82d">
+                <button id="_cancelarM" class="u-2d3075">Cancelar</button>
+                <button id="_confirmarM" class="u-b9baa2">
+                    <i class="fa-solid fa-check"></i> Agregar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalCrearGrupo" class="u-584ed4">
+        <div class="u-191fa1">
+            <div class="u-1dc512">
+                <h3 class="u-51ed21"><i class="fa-solid u-dcd0cf"></i> Nuevo Grupo</h3>
+                <button id="_cerrarG" class="u-61f461">&times;</button>
+            </div>
+            <div class="u-b98c2c">
+                <div>
+                    <label class="u-c085b7">Nombre <span class="u-c9e348">*</span></label>
+                    <input id="_gnombre" type="text" placeholder="Ej: Ahorro Familiar" class="u-0a2f92">
+                </div>
+                <div>
+                    <label class="u-c085b7">Tipo</label>
+                    <select id="_gtipo" class="u-8b3efc">
+                        <option value="ahorro">Ahorro</option>
+                        <option value="mixto" selected>Mixto</option>
+                        <option value="prestamo">Préstamo</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="u-c085b7">Descripción</label>
+                    <textarea id="_gdesc" rows="2" placeholder="Opcional..." class="u-4109f0"></textarea>
+                </div>
+            </div>
+            <div class="u-21b82d">
+                <button id="_cancelarG" class="u-2d3075">Cancelar</button>
+                <button id="_confirmarG" class="u-b9baa2">
+                    <i class="fa-solid fa-check"></i> Crear Grupo
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="modalPost" class="modal-overlay hidden u-cb4589">
+        <div class="modal-card u-5ab118">
+            <div class="modal-header">
+                <h3><i class="fa-solid"></i> Nueva Publicación</h3>
+                <button class="btn-close" id="closeModalPost">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="formPost">
+                    <textarea id="mensajePost" rows="4" placeholder="¿Qué quieres compartir con la comunidad?" required
+                        class="u-f738b2"></textarea>
+                    <div id="previewContainer" class="hidden u-d43169">
+                        <img id="imagePreview" src="" alt="preview" class="u-314319">
+                    </div>
+                    <div class="modal-footer u-a899f2">
+                        <button type="button" class="btn-secondary" id="cancelarPost">Cancelar</button>
+                        <button type="submit" class="btn-primary">
+                            <i class="fa-solid fa-paper-plane"></i> Publicar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalEvento" class="u-584ed4">
+        <div class="u-3b3084">
+            <div class="u-993f5d">
+                <h3 class="u-51ed21"><i class="fa-regular u-a4106d"></i> Nuevo Evento</h3>
+                <button id="cerrarModalEvento" class="u-2f1cd2">&times;</button>
+            </div>
+            <form id="formEvento">
+                <div class="u-b98c2c">
+                    <div>
+                        <label class="u-98503d">Título del evento *</label>
+                        <input id="eventoTitulo" type="text" placeholder="Ej: Reunión mensual del grupo" required
+                            class="u-76bdfb">
+                    </div>
+                    <div>
+                        <label class="u-98503d">Descripción</label>
+                        <textarea id="eventoDesc" rows="2" placeholder="Detalles del evento..."
+                            class="u-a2e710"></textarea>
+                    </div>
+                    <div class="u-eba032">
+                        <div>
+                            <label class="u-98503d">Fecha *</label>
+                            <input id="eventoFecha" type="date" required class="u-76bdfb">
+                        </div>
+                        <div>
+                            <label class="u-98503d">Hora</label>
+                            <input id="eventoHora" type="time" class="u-76bdfb">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="u-98503d">Lugar</label>
+                        <input id="eventoLugar" type="text" placeholder="Ej: Casa comunal / Zoom" class="u-76bdfb">
+                    </div>
+                </div>
+                <div class="u-bafcf0">
+                    <button type="button" id="cancelarEvento" class="u-b5482f">Cancelar</button>
+                    <button type="submit" class="u-8a6e2d">
+                        <i class="fa-solid fa-calendar-check"></i> Crear Evento
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

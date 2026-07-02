@@ -1,0 +1,45 @@
+# ===== Backend (Java / Maven / Spring Boot) =====
+backend/target/
+backend/uploads/
+backend/private-uploads/
+*.class
+*.jar
+*.war
+HELP.md
+.mvn/
+mvnw
+mvnw.cmd
+
+# Logs
+*.log
+spring.log
+
+# ===== Configuración local con credenciales =====
+# Si decides no subir tus credenciales reales de MySQL, descomenta la siguiente línea
+# y deja en el repo solo un application.properties.example
+# backend/src/main/resources/application.properties
+
+# ===== Entornos / IDEs =====
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.classpath
+.project
+*.code-workspace
+
+# ===== Sistema operativo =====
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== Frontend =====
+node_modules/
+.env
+
+# ===== Archivos temporales =====
+*.tmp
+*.bak
+*.swp

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro | Bankomunal</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/utilities.css">
+</head>
+
+<body class="bg-auth-layout">
+
+    <main class="auth-wrapper">
+        <section class="card auth-card">
+
+            <header class="auth-header">
+                <img src="assets/img/logo.png" alt="Logo Bankomunal" class="auth-logo-img">
+                <div class="auth-brand">
+                    <strong class="brand-name">BANKOMUNAL</strong>
+                    <span class="brand-tagline">Microfinanzas Comunitarias</span>
+                </div>
+            </header>
+
+            <h1 class="auth-title">Crear cuenta</h1>
+            <p class="auth-subtitle">Completa los datos para unirte a nuestra comunidad</p>
+
+
+            <div class="steps-indicator" id="stepsIndicator">
+                <div class="step-dot active" id="dot1">1</div>
+                <div class="step-line" id="line1"></div>
+                <div class="step-dot" id="dot2">2</div>
+                <div class="step-line" id="line2"></div>
+                <div class="step-dot" id="dot3">3</div>
+            </div>
+
+            <form id="registerForm" novalidate>
+
+
+                <div class="form-step active" id="step1">
+                    <p class="u-cfed26">DATOS PERSONALES</p>
+
+                    <div class="field-row">
+                        <div class="field-group">
+                            <label for="nombres">Nombres <span class="required">*</span></label>
+                            <input type="text" id="nombres" name="nombres" placeholder="Ej. María Elena" required
+                                autocomplete="given-name">
+                        </div>
+                        <div class="field-group">
+                            <label for="apellidos">Apellidos <span class="required">*</span></label>
+                            <input type="text" id="apellidos" name="apellidos" placeholder="Ej. Rodríguez Pérez"
+                                required autocomplete="family-name">
+                        </div>
+                    </div>
+
+                    <div class="field-row">
+                        <div class="field-group">
+                            <label for="tipoDoc">Tipo de documento <span class="required">*</span></label>
+                            <select id="tipoDoc" name="tipoDocumento" required>
+                                <option value="">Seleccionar…</option>
+                                <option value="CC">Cédula de Ciudadanía</option>
+                                <option value="CE">Cédula de Extranjería</option>
+                                <option value="PP">Pasaporte</option>
+                                <option value="TI">Tarjeta de Identidad</option>
+                            </select>
+                        </div>
+                        <div class="field-group">
+                            <label for="documento">Número de documento <span class="required">*</span></label>
+                            <input type="text" id="documento" name="documentId" placeholder="Ej. 1234567890" required>
+                        </div>
+                    </div>
+
+                    <div class="field-row">
+                        <div class="field-group">
+                            <label for="fechaNacimiento">Fecha de nacimiento <span class="required">*</span></label>
+                            <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
+                        </div>
+                        <div class="field-group">
+                            <label for="genero">Género</label>
+                            <select id="genero" name="genero">
+                                <option value="">Prefiero no decir</option>
+                                <option value="M">Masculino</option>
+                                <option value="F">Femenino</option>
+                                <option value="O">Otro</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="telefono">Teléfono / Celular <span class="required">*</span></label>
+                        <input type="tel" id="telefono" name="telefono" placeholder="Ej. +57 300 123 4567" required
+                            autocomplete="tel">
+                    </div>
+
+                    <div class="form-nav">
+                        <button type="button" class="btn-step-next" id="btnNext1">
+                            Continuar <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    <p class="reg-error-msg mensaje-status error-text mt-10" hidden></p>
+                </div>
+
+
+                <div class="form-step" id="step2">
+                    <p class="u-cfed26">DIRECCIÓN Y ACCESO</p>
+
+                    <div class="field-group">
+                        <label for="email">Correo electrónico <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required
+                            autocomplete="email">
+                    </div>
+
+                    <div class="field-group">
+                        <label for="direccion">Dirección de residencia <span class="required">*</span></label>
+                        <input type="text" id="direccion" name="direccion" placeholder="Calle, número, barrio" required>
+                    </div>
+
+                    <div class="field-row">
+                        <div class="field-group">
+                            <label for="ciudad">Ciudad <span class="required">*</span></label>
+                            <input type="text" id="ciudad" name="ciudad" placeholder="Ej. Bogotá" required>
+                        </div>
+                        <div class="field-group">
+                            <label for="departamento">Departamento <span class="required">*</span></label>
+                            <input type="text" id="departamento" name="departamento" placeholder="Ej. Cundinamarca">
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="ocupacion">Ocupación / Actividad económica <span class="required">*</span></label>
+                        <select id="ocupacion" name="ocupacion">
+                            <option value="">Seleccionar…</option>
+                            <option value="empleado">Empleado / Asalariado</option>
+                            <option value="independiente">Trabajador independiente</option>
+                            <option value="empresario">Empresario / Comerciante</option>
+                            <option value="agricultor">Agricultor / Ganadero</option>
+                            <option value="estudiante">Estudiante</option>
+                            <option value="pensionado">Pensionado / Jubilado</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="password">Contraseña <span class="required">*</span></label>
+                        <div class="password-wrapper">
+                            <input type="password" id="password" name="password" placeholder="Mínimo 8 caracteres"
+                                required autocomplete="new-password">
+                            <i class="fa-solid fa-eye toggle-pass" id="togglePwd"></i>
+                        </div>
+                        <span class="helper-text">Mínimo 8 caracteres, incluya letras y números.</span>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="password2">Confirmar contraseña <span class="required">*</span></label>
+                        <div class="password-wrapper">
+                            <input type="password" id="password2" name="passwordConfirm"
+                                placeholder="Repite la contraseña" required autocomplete="new-password">
+                        </div>
+                    </div>
+
+                    <div class="form-nav">
+                        <button type="button" class="btn-step-prev" id="btnPrev2">
+                            <i class="fa-solid fa-arrow-left"></i> Atrás
+                        </button>
+                        <button type="button" class="btn-step-next" id="btnNext2">
+                            Continuar <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    <p class="reg-error-msg mensaje-status error-text mt-10" hidden></p>
+                </div>
+
+
+                <div class="form-step" id="step3">
+                    <p class="u-cfed26">DOCUMENTOS DE IDENTIDAD</p>
+
+                    <div class="field-group">
+                        <label>Foto frontal de la cédula <span class="required">*</span></label>
+                        <div class="upload-zone" id="uploadFrontal" data-trigger="cedula_frontal">
+                            <input type="file" id="cedula_frontal" name="cedula_frontal" accept="image/*,.pdf"
+                                capture="environment">
+                            <div class="upload-icon"><i class="fa-regular fa-id-card"></i></div>
+                            <div class="upload-label">
+                                <strong>Toca para subir</strong> o arrastra la imagen<br>
+                                <span>Parte frontal — JPG, PNG o PDF, máx. 5 MB</span>
+                            </div>
+                            <div class="upload-preview" id="previewFrontal">
+                                <img id="imgFrontal" src="" alt="Vista previa frontal">
+                                <p class="upload-filename" id="nameFrontal"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <label>Foto posterior de la cédula <span class="required">*</span></label>
+                        <div class="upload-zone" id="uploadPosterior" data-trigger="cedula_posterior">
+                            <input type="file" id="cedula_posterior" name="cedula_posterior" accept="image/*,.pdf"
+                                capture="environment">
+                            <div class="upload-icon"><i class="fa-regular fa-id-card u-25af4f"></i></div>
+                            <div class="upload-label">
+                                <strong>Toca para subir</strong> o arrastra la imagen<br>
+                                <span>Parte posterior — JPG, PNG o PDF, máx. 5 MB</span>
+                            </div>
+                            <div class="upload-preview" id="previewPosterior">
+                                <img id="imgPosterior" src="" alt="Vista previa posterior">
+                                <p class="upload-filename" id="namePosterior"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <label>Selfie sosteniendo la cédula <span class="u-093dbd">(opcional pero
+                                recomendado)</span></label>
+                        <div class="upload-zone" id="uploadSelfie" data-trigger="selfie_cedula">
+                            <input type="file" id="selfie_cedula" name="selfie_cedula" accept="image/*" capture="user">
+                            <div class="upload-icon"><i class="fa-solid fa-camera"></i></div>
+                            <div class="upload-label">
+                                <strong>Tomar foto</strong> o subir desde galería
+                            </div>
+                            <div class="upload-preview" id="previewSelfie">
+                                <img id="imgSelfie" src="" alt="Vista previa selfie">
+                                <p class="upload-filename" id="nameSelfie"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="auth-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="terminos" name="terms" required>
+                            <span class="terms-text">
+                                Acepto los <a href="#" id="openTerms" class="forgot-link">términos y condiciones</a>
+                                y la <a href="#" class="forgot-link">política de privacidad</a>
+                            </span>
+                        </label>
+                    </div>
+
+                    <div class="auth-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="autorizaDatos" name="autorizaDatos" required>
+                            <span class="terms-text">Autorizo el tratamiento de mis datos personales conforme a la
+                                ley.</span>
+                        </label>
+                    </div>
+
+                    <div class="form-nav">
+                        <button type="button" class="btn-step-prev" id="btnPrev3">
+                            <i class="fa-solid fa-arrow-left"></i> Atrás
+                        </button>
+                        <button type="submit" class="btn-step-next" id="btnRegisterSubmit">
+                            <i class="fa-solid fa-user-plus"></i> Registrarse
+                        </button>
+                    </div>
+
+                    <div id="registerStatus" class="mt-20">
+                        <p id="errorRegister" class="mensaje-status error-text" hidden></p>
+                    </div>
+                </div>
+
+            </form>
+
+            <footer class="auth-footer">
+                <nav class="auth-navigation">
+                    <p>¿Ya tienes cuenta? <a href="login.html" class="register-link">Inicia sesión</a></p>
+                </nav>
+                <p>&copy; 2026 Bankomunal. Todos los derechos reservados.</p>
+            </footer>
+
+        </section>
+    </main>
+
+
+    <div id="modalTerminos" class="modal-overlay hidden">
+        <div class="modal-content">
+            <header class="modal-header">
+                <h2>Términos de Bankomunal</h2>
+                <button id="closeModal" class="btn-close">&times;</button>
+            </header>
+            <div class="modal-body">
+                <p>Bienvenido a <strong>Bankomunal</strong>. Al unirte, aceptas:</p>
+                <h4 class="u-967225">1. Compromiso Comunitario</h4>
+                <p>Apoyo mutuo y gestión responsable de recursos financieros comunitarios.</p>
+                <h4 class="u-967225">2. Veracidad de Datos</h4>
+                <p>Toda la información y documentación proporcionada debe ser real y válida.</p>
+                <h4 class="u-967225">3. Uso de Documentos</h4>
+                <p>Las imágenes de cédula se usan exclusivamente para verificar identidad conforme a la normativa
+                    vigente.</p>
+                <h4 class="u-967225">4. Seguridad</h4>
+                <p>Tus datos están protegidos bajo cifrado y no serán compartidos con terceros sin tu consentimiento.
+                </p>
+                <h4 class="u-967225">5. Responsabilidad</h4>
+                <p>No compartir credenciales con terceros. Eres responsable de la actividad en tu cuenta.</p>
+            </div>
+            <footer class="modal-footer">
+                <button id="acceptTermsBtn" class="btn-primary btn-full">Entendido y Aceptar</button>
+            </footer>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>
