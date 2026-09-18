@@ -21,7 +21,7 @@ Sistema web de gestión de fondos comunitarios (bancos comunales) que permite a 
 - Java 21
 - Spring Boot 3.3.0 (Web, Data JPA, Security, Validation, WebSocket, Mail)
 - MySQL 8
-- JWT (JJWT 0.12.5) para autenticación
+- JWT (JWT 0.12.5) para autenticación
 - Apache POI (exportación a Excel)
 - WebSocket / STOMP (notificaciones y chat en tiempo real)
 - AES-256-GCM (cifrado de respaldos de base de datos)
