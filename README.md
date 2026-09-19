@@ -94,7 +94,7 @@ bankomunal/
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/<tu-usuario>/bankomunal.git
+git clone https://github.com/hyashley0620/bankomunal.git
 cd bankomunal
 ```
 
